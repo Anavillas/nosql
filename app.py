@@ -7,10 +7,10 @@ app = Flask(__name__)
 app.register_blueprint(livro_bp)
 
 @app.route("/")
-def index():
+def home():
     return render_template("home.html")
 
-@app.route("/view/livro")
+@app.route("/view/livros")
 def view_biblioteca():
     return render_template("biblioteca.html")
 
