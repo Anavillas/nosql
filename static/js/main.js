@@ -1,20 +1,41 @@
 $(document).ready(function() {
-  // Ao clicar em "Biblioteca" no menu, carregamos a página correspondente
-  $("#linkBiblioteca").click(function(e) {
-      e.preventDefault();
-      // Verifica se a div já contém conteúdo
-      if ($("#divPrincipal").children().length === 0) {
-          $("#divPrincipal").load("/view/livros", function() {
-              // Após carregar o HTML, carregamos o script do CRUD
-              $.getScript("/static/js/livros.js")
-                  .done(function() {
-                      console.log("Script de livros carregado com sucesso.");
-                      // Inicializa os eventos e carrega a lista de livros
-                  })
-                  .fail(function() {
-                      console.error("Não foi possível carregar livros.js");
-                  });
-          });
-      }
-  });
+    // Função para carregar os conteúdos de Usuários e Livros
+    function carregarConteudos() {
+        // Carregar o conteúdo de Usuários
+        $("#divUsuarios").load("/view/user", function(response, status, xhr) {
+            if (status === "success") {
+                console.log("Conteúdo de Usuários carregado com sucesso.");
+            } else {
+                console.error("Erro ao carregar Usuários: " + xhr.status);
+            }
+        });
+
+        // Carregar o conteúdo de Livros
+        $("#divLivros").load("/view/livros", function(response, status, xhr) {
+            if (status === "success") {
+                console.log("Conteúdo de Livros carregado com sucesso.");
+            } else {
+                console.error("Erro ao carregar Livros: " + xhr.status);
+            }
+        });
+
+        $("#divLivros").load("/view/livros", function(response, status, xhr) {
+            if (status === "success") {
+                console.log("Conteúdo de Livros carregado com sucesso.");
+            } else {
+                console.error("Erro ao carregar Livros: " + xhr.status);
+            }
+        });
+
+        $("#divUserLivro").load("/view/userlivro", function(response, status, xhr) {
+            if (status === "success") {
+                console.log("Conteúdo de Livros Emprestados carregado com sucesso.");
+            } else {
+                console.error("Erro ao carregar Livros Emprestados: " + xhr.status);
+            }
+        });
+    }
+
+    // Carregar os conteúdos assim que a página for carregada
+    carregarConteudos();
 });

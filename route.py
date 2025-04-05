@@ -33,3 +33,4 @@ def deletar_livro(lid):
     if del_count == 0:
         return jsonify({"erro": "Livro não encontrado!"}), 404
     return jsonify({"mensagem": "Livro deletado com sucesso!"}), 200
+
