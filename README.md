@@ -20,6 +20,8 @@ Este é um sistema simples de gerenciamento de livros e usuários, desenvolvido 
 Certifique-se de ter instalado:
 
 - Python 3.10 ou superior
+- PyFlask
+- PyMongo
 - MongoDB instalado e rodando localmente (`mongodb://localhost:27017`)
 - Git
 
@@ -30,5 +32,5 @@ Certifique-se de ter instalado:
 1. **Clone o repositório:**
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone [https://github.com/anavillas/nosql](https://github.com/Anavillas/nosql.git](https://github.com/Anavillas/nosql.git)
 cd seu-repositorio
