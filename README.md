@@ -32,5 +32,5 @@ Certifique-se de ter instalado:
 1. **Clone o repositório:**
 
 ```bash
-git clone [https://github.com/anavillas/nosql](https://github.com/Anavillas/nosql.git](https://github.com/Anavillas/nosql.git)
+git clone https://github.com/Anavillas/nosql.git
 cd seu-repositorio
