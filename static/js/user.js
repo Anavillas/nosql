@@ -1,8 +1,8 @@
-var API_URL = ""; // Defina a URL da API
+var API_URL = ""; 
 var listaUsers = [];
 
 function formatarTeleFone(Fone) {
-    if (!Fone) return "TeleFone inválido";  // Verificação extra
+    if (!Fone) return "TeleFone inválido";  
     let digits = Fone.replace(/\D/g, "");
     
     if (digits.length === 10) {
@@ -31,9 +31,9 @@ function editarUser(uid) {
     return;
   }
 
-  // Preenche os campos do modal com os dados do User
+  
   $("#inputId").val(User.id);
-  $("#inputId").attr("disabled", true); // Impede alteração do ID
+  $("#inputId").attr("disabled", true);
   $("#inputNome").val(User.nome);
   $("#inputFone").val(User.fone);
   $('#staticBackdrop').modal('show');
@@ -41,20 +41,21 @@ function editarUser(uid) {
 
 function carregarUsers() {
     $.ajax({
-      url: API_URL + "/Users",
+      url: API_URL + "/users",
       method: "GET",
-      success: function(res) {
-        let tabelaUsuarios = $('#tabelaUsuarios tbody');
-        tabelaUsuarios.empty(); // Limpa a tabela antes de adicionar novos dados
-        res.forEach(user => {
-          tabelaUsuarios.append(`
+      success: function(dados) {
+        listaUsers = dados;
+        const tbody = $("#tabelaUsuarios tbody");
+        tbody.empty(); 
+        dados.forEach(u => {
+          tbody.append(`
             <tr>
-              <td>${user.id}</td>
-              <td>${user.nome}</td>
-              <td>${user.fone}</td>
+              <td>${u.id}</td>
+              <td>${u.nome}</td>
+              <td>${u.fone}</td>
               <td>
-                <button class="btn btn-info" onclick="editarUser(${user.id})">Editar</button>
-                <button class="btn btn-danger" onclick="deletarUser(${user.id})">Deletar</button>
+                <button class="btn btn-warning btn-sm" onclick="editarUser(${u.id})">Editar</button>
+                <button class="btn btn-danger btn-sm" onclick="deletarUser(${u.id})">Deletar</button>
               </td>
             </tr>
           `);
@@ -68,17 +69,17 @@ function carregarUsers() {
   
 
 function criarUser() {
-  const User = {
+  const user = {
     id: parseInt($("#inputId").val()),
     nome: $("#inputNome").val(),
     fone: $("#inputFone").val()
   };
   
   $.ajax({
-    url: API_URL + "/Users",
+    url: API_URL + "/users",
     method: "POST",
     contentType: "application/json",
-    data: JSON.stringify(User),
+    data: JSON.stringify(user),
     success: function(res) {
       Swal.fire({ icon: 'success', title: 'Sucesso', text: res.mensagem });
       carregarUsers();
@@ -92,9 +93,9 @@ function criarUser() {
 }
 
 function IncluirUser() {
-  // Limpa os campos antes de abrir o modal
-  $("#inputId").val(0); // Para inclusão, o ID é 0
-  $("#inputId").attr("disabled", false); // Permite editar o ID
+  
+  $("#inputId").val(0); 
+  $("#inputId").attr("disabled", false); 
   $("#inputNome").val("");
   $("#inputFone").val("");
   $('#staticBackdrop').modal('show');
@@ -113,18 +114,18 @@ function atualizarUser() {
     const uid = parseInt($("#inputId").val());
     const dados = {
       nome: $("#inputNome").val(),
-      fone: $("#inputFone").val(), // Corrigido o ID para 'inputFone' com "F" maiúsculo
+      fone: $("#inputFone").val() 
     };
     
     $.ajax({
-      url: API_URL + "/Users/" + uid,
+      url: API_URL + "/users/" + uid,
       method: "PUT",
       contentType: "application/json",
       data: JSON.stringify(dados),
       success: function(res) {
         Swal.fire({ icon: 'success', title: 'Sucesso', text: res.mensagem });
         carregarUsers();
-        $("#formUser")[0].reset(); // Limpa o formulário
+        $("#formUser")[0].reset(); 
         $('#staticBackdrop').modal('hide');
       },
       error: function(err) {
@@ -147,7 +148,7 @@ function deletarUser(uid) {
   }).then((result) => {
     if (result.isConfirmed) {
       $.ajax({
-        url: API_URL + "/Users/" + uid,
+        url: API_URL + "/users/" + uid,
         method: "DELETE",
         success: function(res) {
           Swal.fire({ icon: 'success', title: 'Sucesso', text: res.mensagem });
@@ -162,5 +163,5 @@ function deletarUser(uid) {
 }
 
 $(document).ready(function(){
-  carregarUsers(); // Carrega a lista de Users na inicialização
+  carregarUsers();
 });

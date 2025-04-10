@@ -49,6 +49,26 @@
           </div>
         </div>
       </div>
+      <!-- Modal Adicionar/Editar Livro -->
+      <div class="modal fade" id="modalLivro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalLivroLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="modalLivroLabel">Gerenciar Livros</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+              <form id="formLivro">
+                <!-- campos mantidos iguais -->
+              </form>
+            </div>
+            <div class="modal-footer mt-2">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+              <button type="button" class="btn btn-primary" onclick="gravarDados()">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Tabela de Livros -->
       <div class="mt-4">

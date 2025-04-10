@@ -34,3 +34,7 @@ def deletar_livro(lid):
         return jsonify({"erro": "Livro não encontrado!"}), 404
     return jsonify({"mensagem": "Livro deletado com sucesso!"}), 200
 
+
+@livro_bp.route("/contar-livros", methods=["GET"])
+def contar_livros():
+    return livroController.contar_livros()

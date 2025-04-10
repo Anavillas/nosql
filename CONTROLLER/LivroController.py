@@ -1,8 +1,14 @@
 from MODEL.livroBibliotecaModel import LivroBiblioteca, LivroModel
+from flask import jsonify
+
 
 class LivroController:
     def __init__(self):
         self.model = LivroModel()
+    
+    def contar_livros(self):
+        total = self.model.contar_livros()
+        return jsonify({'total': total})
 
     def listar_livros(self):
         return self.model.listar_todos()

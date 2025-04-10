@@ -34,3 +34,6 @@ def deletar_user(uid):
         return jsonify({"erro": "user não encontrado!"}), 404
     return jsonify({"mensagem": "user deletado com sucesso!"}), 200
 
+@user_bp.route("/contar-users", methods=["GET"])
+def contar_users():
+    return userController.contar_users()

@@ -1,4 +1,4 @@
-var API_URL = ""; // Defina a URL da API
+var API_URL = "";
 var listaLivros = [];
 
 function editarLivro(lid) {
@@ -12,16 +12,18 @@ function editarLivro(lid) {
     return;
   }
 
-  // Preenche os campos do modal com os dados do livro
+  
   $("#inputId").val(livro.id);
-  $("#inputId").attr("disabled", true); // Impede alteração do ID
+  $("#inputId").attr("disabled", true); 
   $("#inputTitulo").val(livro.titulo);
   $("#inputAutor").val(livro.autor);
   $("#inputGenero").val(livro.genero);
   $("#inputAno").val(livro.ano);
   
-  $('#staticBackdrop').modal('show');
+  const modal = new bootstrap.Modal(document.getElementById('modalAdicionar'));
+  modal.show();
 }
+
 
 function carregarLivros() {
   $.ajax({
@@ -70,7 +72,7 @@ function criarLivro() {
     success: function(res) {
       Swal.fire({ icon: 'success', title: 'Sucesso', text: res.mensagem });
       carregarLivros();
-      $("#formLivro")[0].reset(); // Limpa o formulário
+      $("#formLivro")[0].reset(); 
       $('#staticBackdrop').modal('hide');
     },
     error: function(err) {
@@ -80,9 +82,9 @@ function criarLivro() {
 }
 
 function IncluirLivro() {
-  // Limpa os campos antes de abrir o modal
-  $("#inputId").val(0); // Para inclusão, o ID é 0
-  $("#inputId").attr("disabled", false); // Permite editar o ID
+ 
+  $("#inputId").val(0); 
+  $("#inputId").attr("disabled", false);
   $("#inputTitulo").val("");
   $("#inputAutor").val("");
   $("#inputGenero").val("");
@@ -153,5 +155,5 @@ function deletarLivro(lid) {
 }
 
 $(document).ready(function(){
-  carregarLivros(); // Carrega a lista de livros na inicialização
+  carregarLivros();
 });

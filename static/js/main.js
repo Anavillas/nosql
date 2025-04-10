@@ -34,8 +34,22 @@ $(document).ready(function() {
                 console.error("Erro ao carregar Livros Emprestados: " + xhr.status);
             }
         });
-    }
 
+        contarTotal();
+    }
+    function contarTotal(){
+        $.getJSON("/contar-livros", function (data) {
+            $("#totalLivros").text(data.total);
+        }).fail(function () {
+            console.error("Erro ao contar livros.");
+        });
+
+        $.getJSON("/contar-users", function (data) {
+            $("#totalUsers").text(data.total);
+        }).fail(function () {
+            console.error("Erro ao contar usuários.");
+        });
+    }
     // Carregar os conteúdos assim que a página for carregada
     carregarConteudos();
 });
