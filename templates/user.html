@@ -1,22 +1,18 @@
 
     
-    <!-- Card para o conteúdo -->
      <div class="container mt-4">
     <div class="card">
       <div class="card-header">
         <h4>Lista de Usuários</h4>
       </div>
       <div class="card-body">
-        <!-- Título -->
 
-        <!-- Botão para adicionar usuário no canto direito -->
         <div class="text-end">
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAdicionarUser" onclick="IncluirUser()">
             Adicionar
           </button>
         </div>
 
-        <!-- Modal Adicionar Usuário -->
         <div class="modal fade" id="modalAdicionarUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -48,7 +44,6 @@
           </div>
         </div>
 
-        <!-- Tabela de Usuários -->
         <div class="mt-4">
           <table class="table table-striped" id="tabelaUsuarios">
             <thead>
@@ -66,7 +61,6 @@
     </div>
   </div>
 
-  <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="/static/js/usuario.js"></script>

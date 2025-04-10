@@ -14,9 +14,9 @@ class LivroController:
         return self.model.listar_todos()
 
     def criar_livro(self, data):
-        # Espera data = {"id": ..., "titulo": ..., "autor": ..., "genero": ..., "ano": ...}
+        
         livro = LivroBiblioteca(
-            lid=data["id"],  # Usando "lid" como identificador
+            lid=data["id"],  
             titulo=data["titulo"],
             autor=data["autor"],
             genero=data["genero"],
@@ -26,7 +26,7 @@ class LivroController:
 
     def atualizar_livro(self, lid, data):
         livro = LivroBiblioteca(
-            lid=lid,  # Usando "lid" como identificador
+            lid=lid,  
             titulo=data["titulo"],
             autor=data["autor"],
             genero=data["genero"],
@@ -35,4 +35,4 @@ class LivroController:
         return self.model.atualizar_livro(livro)
 
     def deletar_livro(self, lid):
-        return self.model.deletar_livro(lid)  # Passando o "lid" para deletar
+        return self.model.deletar_livro(lid)  

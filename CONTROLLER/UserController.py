@@ -13,9 +13,9 @@ class UserController:
         return self.model.listar_todos()
 
     def criar_user(self, data):
-        # Espera data = {"id": ..., "nome": ..., "nome": ..., "genero": ..., "ano": ...}
+        
         user = userBiblioteca(
-            uid=data["id"],  # Usando "uid" como identificador
+            uid=data["id"], 
             nome=data["nome"],
             fone=data["fone"]
         )
@@ -23,11 +23,11 @@ class UserController:
 
     def atualizar_user(self, uid, data):
         user = userBiblioteca(
-            uid=uid,  # Usando "uid" como identificador
+            uid=uid,  
             nome=data["nome"],
             fone=data["fone"]
         )
         return self.model.atualizar_user(user)
 
     def deletar_user(self, uid):
-        return self.model.deletar_user(uid)  # Passando o "uid" para deletar
+        return self.model.deletar_user(uid)  

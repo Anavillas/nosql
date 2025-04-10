@@ -36,7 +36,9 @@ function editarUser(uid) {
   $("#inputId").attr("disabled", true);
   $("#inputNome").val(User.nome);
   $("#inputFone").val(User.fone);
-  $('#staticBackdrop').modal('show');
+
+  const modal = new bootstrap.Modal(document.getElementById('modalAdicionarUser'));
+  modal.show();
 }
 
 function carregarUsers() {

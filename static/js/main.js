@@ -1,7 +1,5 @@
 $(document).ready(function() {
-    // Função para carregar os conteúdos de Usuários e Livros
     function carregarConteudos() {
-        // Carregar o conteúdo de Usuários
         $("#divUsuarios").load("/view/user", function(response, status, xhr) {
             if (status === "success") {
                 console.log("Conteúdo de Usuários carregado com sucesso.");
@@ -10,7 +8,6 @@ $(document).ready(function() {
             }
         });
 
-        // Carregar o conteúdo de Livros
         $("#divLivros").load("/view/livros", function(response, status, xhr) {
             if (status === "success") {
                 console.log("Conteúdo de Livros carregado com sucesso.");
@@ -50,6 +47,5 @@ $(document).ready(function() {
             console.error("Erro ao contar usuários.");
         });
     }
-    // Carregar os conteúdos assim que a página for carregada
     carregarConteudos();
 });
