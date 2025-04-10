@@ -1,25 +1,6 @@
 var API_URL = ""; 
 var listaUsers = [];
 
-function formatarTeleFone(Fone) {
-    if (!Fone) return "TeleFone inválido";  
-    let digits = Fone.replace(/\D/g, "");
-    
-    if (digits.length === 10) {
-      const ddd = digits.slice(0, 2);
-      const parte1 = digits.slice(2, 6);
-      const parte2 = digits.slice(6);
-      return `(${ddd}) ${parte1}-${parte2}`;
-    } else if (digits.length === 11) {
-      const ddd = digits.slice(0, 2);
-      const parte1 = digits.slice(2, 7);
-      const parte2 = digits.slice(7);
-      return `(${ddd}) ${parte1}-${parte2}`;
-    } else {
-      return Fone + " [Fone inválido]";
-    }
-}
-
 function editarUser(uid) {
   const User = listaUsers.find(u => u.id === uid);
   if (!User) {
@@ -36,9 +17,7 @@ function editarUser(uid) {
   $("#inputId").attr("disabled", true);
   $("#inputNome").val(User.nome);
   $("#inputFone").val(User.fone);
-
-  const modal = new bootstrap.Modal(document.getElementById('modalAdicionarUser'));
-  modal.show();
+  $('#staticBackdrop').modal('show');
 }
 
 function carregarUsers() {
